@@ -4,103 +4,130 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NISCALA - Form Pemesanan</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>NISCALA</h1>
-    <p>Kedai kopi dan pastry rumahan. Dibuat fresh setiap hari sejak 2020.</p>
-    <nav aria-label="Navigasi utama">
-      <ul>
-        <li><a href="index.html">Beranda</a></li>
-        <li><a href="index.html#daftar-produk">Daftar Produk</a></li>
-        <li><a href="form.html" aria-current="page">Pesan Sekarang</a></li>
-      </ul>
-    </nav>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="NISCALA beranda">NISCALA</a>
+      <nav class="main-nav" aria-label="Navigasi utama">
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="index.html#daftar-produk">Daftar Produk</a></li>
+          <li><a class="nav-cta" href="form.html" aria-current="page">Pesan Sekarang</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <h2>Form Pemesanan</h2>
-    <p>Isi data di bawah ini untuk memesan. Kolom bertanda <strong>*</strong> wajib diisi.</p>
-    <p><img src="img/cappuccino.svg" alt="Cangkir cappuccino sebagai ilustrasi produk yang dipesan" width="200" height="200"></p>
+    <section class="page-hero">
+      <div class="container order-hero">
+        <div>
+          <span class="eyebrow">Form Pemesanan</span>
+          <h1>Siapkan pesanan NISCALA favorit Anda.</h1>
+          <p>Isi data di bawah ini untuk memesan. Kolom bertanda <strong>*</strong> wajib diisi.</p>
+        </div>
+        <img src="img/cappuccino.jpg" alt="Foto cappuccino sebagai contoh produk yang dipesan" width="220" height="220">
+      </div>
+    </section>
 
-    <form action="#" method="get">
-      <fieldset>
-        <legend>Data Pemesan</legend>
+    <section class="section">
+      <div class="container form-shell">
+        <form action="#" method="get">
+          <fieldset>
+            <legend>Data Pemesan</legend>
+            <div class="form-grid">
+              <p class="form-field">
+                <label for="nama">Nama Lengkap *</label>
+                <input type="text" id="nama" name="nama" required>
+              </p>
+              <p class="form-field">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+              </p>
+              <p class="form-field">
+                <label for="telepon">Nomor WhatsApp *</label>
+                <input type="tel" id="telepon" name="telepon" pattern="08[0-9]{8,11}" placeholder="Contoh: 081210002000" required>
+              </p>
+            </div>
+          </fieldset>
 
-        <p>
-          <label for="nama">Nama Lengkap *</label><br>
-          <input type="text" id="nama" name="nama" required>
-        </p>
-        <p>
-          <label for="email">Email *</label><br>
-          <input type="email" id="email" name="email" required>
-        </p>
-        <p>
-          <label for="telepon">Nomor WhatsApp *</label><br>
-          <input type="tel" id="telepon" name="telepon" pattern="08[0-9]{8,11}" placeholder="Contoh: 081210002000" required>
-        </p>
-      </fieldset>
+          <fieldset>
+            <legend>Detail Pesanan</legend>
+            <div class="form-grid">
+              <p class="form-field">
+                <label for="produk">Produk *</label>
+                <select id="produk" name="produk" required>
+                  <option value="">-- Pilih produk --</option>
+                  <option value="cappuccino">Cappuccino - Rp 28.000</option>
+                  <option value="latte">Latte - Rp 30.000</option>
+                  <option value="croissant">Croissant Cokelat - Rp 25.000</option>
+                  <option value="tiramisu">Tiramisu - Rp 32.000</option>
+                </select>
+              </p>
+              <p class="form-field">
+                <label for="jumlah">Jumlah *</label>
+                <input type="number" id="jumlah" name="jumlah" min="1" max="20" value="1" required>
+              </p>
+              <p class="form-field">
+                <label for="ukuran">Ukuran</label>
+                <select id="ukuran" name="ukuran">
+                  <option value="reguler">Reguler</option>
+                  <option value="large">Large (+ Rp 5.000)</option>
+                </select>
+              </p>
+              <p class="form-field form-field-wide">
+                <label for="catatan">Catatan untuk Barista</label>
+                <textarea id="catatan" name="catatan" rows="4" maxlength="200" placeholder="Contoh: kurang manis, minta es sedikit"></textarea>
+              </p>
+            </div>
+          </fieldset>
 
-      <fieldset>
-        <legend>Detail Pesanan</legend>
+          <fieldset>
+            <legend>Pengiriman</legend>
+            <div class="form-grid">
+              <p class="form-field">
+                <label for="metode">Metode Pengambilan *</label>
+                <select id="metode" name="metode" required>
+                  <option value="">-- Pilih metode --</option>
+                  <option value="dine-in">Makan di tempat (Dine In)</option>
+                  <option value="take-away">Bawa pulang (Take Away)</option>
+                  <option value="delivery">Antar (Delivery)</option>
+                </select>
+              </p>
+              <p class="form-field">
+                <label for="waktu">Waktu Pengambilan</label>
+                <input type="time" id="waktu" name="waktu" min="08:00" max="21:00">
+              </p>
+            </div>
+          </fieldset>
 
-        <p>
-          <label for="produk">Produk *</label><br>
-          <select id="produk" name="produk" required>
-            <option value="">-- Pilih produk --</option>
-            <option value="cappuccino">Cappuccino - Rp 28.000</option>
-            <option value="latte">Latte - Rp 30.000</option>
-            <option value="croissant">Croissant Cokelat - Rp 25.000</option>
-            <option value="tart">Tart Berry - Rp 32.000</option>
-          </select>
-        </p>
-        <p>
-          <label for="jumlah">Jumlah *</label><br>
-          <input type="number" id="jumlah" name="jumlah" min="1" max="20" value="1" required>
-        </p>
-        <p>
-          <label for="ukuran">Ukuran</label><br>
-          <select id="ukuran" name="ukuran">
-            <option value="reguler">Reguler</option>
-            <option value="large">Large (+ Rp 5.000)</option>
-          </select>
-        </p>
-        <p>
-          <label for="catatan">Catatan untuk Barista</label><br>
-          <textarea id="catatan" name="catatan" rows="4" maxlength="200" placeholder="Contoh: kurang manis, minta es sedikit"></textarea>
-        </p>
-      </fieldset>
-
-      <fieldset>
-        <legend>Pengiriman</legend>
-
-        <p>
-          <label for="metode">Metode Pengambilan *</label><br>
-          <select id="metode" name="metode" required>
-            <option value="">-- Pilih metode --</option>
-            <option value="dine-in">Makan di tempat (Dine In)</option>
-            <option value="take-away">Bawa pulang (Take Away)</option>
-            <option value="delivery">Antar (Delivery)</option>
-          </select>
-        </p>
-        <p>
-          <label for="waktu">Waktu Pengambilan</label><br>
-          <input type="time" id="waktu" name="waktu" min="08:00" max="21:00">
-        </p>
-      </fieldset>
-
-      <p>
-        <button type="submit">Kirim Pesanan</button>
-        <button type="reset">Reset Form</button>
-      </p>
-    </form>
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Kirim Pesanan</button>
+            <button class="btn btn-secondary" type="reset">Reset Form</button>
+          </div>
+        </form>
+      </div>
+    </section>
   </main>
 
-  <footer>
-    <p>NISCALA - Jl. Kopi Nusantara No. 12, Bandung</p>
-    <p>Jam buka 08.00 - 21.00 | WhatsApp: 0812-1000-2000</p>
-    <p><a href="index.html">Kembali ke Beranda</a></p>
-    <p><small>&copy; 2026 NISCALA. Tugas Pemrograman Web - BAB 2 HTML.</small></p>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h2>NISCALA</h2>
+        <p>Jl. Munjul Jaya Permai, Purwakarta, Jawa Barat 41117</p>
+      </div>
+      <div>
+        <h2>Jam Buka</h2>
+        <p>Setiap hari<br>08.00 - 21.00</p>
+      </div>
+      <div>
+        <h2>Kontak</h2>
+        <p>WhatsApp: 0812-1000-2000</p>
+        <a href="index.html">Kembali ke Beranda</a>
+      </div>
+    </div>
   </footer>
 </body>
 </html>
