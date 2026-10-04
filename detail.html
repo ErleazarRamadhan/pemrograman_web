@@ -4,118 +4,152 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NISCALA - Detail Produk</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>NISCALA</h1>
-    <p>Kedai kopi dan pastry rumahan. Dibuat fresh setiap hari sejak 2020.</p>
-    <nav aria-label="Navigasi utama">
-      <ul>
-        <li><a href="index.html">Beranda</a></li>
-        <li><a href="index.html#daftar-produk">Daftar Produk</a></li>
-        <li><a href="form.html">Pesan Sekarang</a></li>
-      </ul>
-    </nav>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="NISCALA beranda">NISCALA</a>
+      <nav class="main-nav" aria-label="Navigasi utama">
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="index.html#daftar-produk">Daftar Produk</a></li>
+          <li><a class="nav-cta" href="form.html">Pesan Sekarang</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <h2>Detail Produk</h2>
-    <p>Berikut rincian setiap produk NISCALA. Pilih tombol <strong>Pesan Sekarang</strong> untuk melanjutkan ke form pemesanan.</p>
-    <nav aria-label="Lompat ke produk">
-      <ul>
-        <li><a href="#cappuccino">Cappuccino</a></li>
-        <li><a href="#latte">Latte</a></li>
-        <li><a href="#croissant">Croissant Cokelat</a></li>
-        <li><a href="#tart">Tart Berry</a></li>
-      </ul>
-    </nav>
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">Detail Produk</span>
+        <h1>Kenali menu sebelum memesan.</h1>
+        <p>Berikut rincian setiap produk NISCALA. Pilih tombol <strong>Pesan Sekarang</strong> untuk melanjutkan ke form pemesanan.</p>
+        <nav class="pill-nav" aria-label="Lompat ke produk">
+          <ul>
+            <li><a href="#cappuccino">Cappuccino</a></li>
+            <li><a href="#latte">Latte</a></li>
+            <li><a href="#croissant">Croissant Cokelat</a></li>
+            <li><a href="#tiramisu">Tiramisu</a></li>
+          </ul>
+        </nav>
+      </div>
+    </section>
 
-    <article id="cappuccino">
-      <h3>Cappuccino</h3>
-      <figure>
-        <img src="img/cappuccino.svg" alt="Cangkir cappuccino dengan busa susu tebal di atasnya" width="240" height="240">
-        <figcaption>Cappuccino Single Shot</figcaption>
-      </figure>
-      <p>Espresso tunggal dengan steamed milk dan busa susu tebal. Rasa seimbang, sedikit cokelat, lembut.</p>
-      <table>
-        <caption>Spesifikasi Cappuccino</caption>
-        <tbody>
-          <tr><th scope="row">Kategori</th><td>Kopi</td></tr>
-          <tr><th scope="row">Harga</th><td>Rp 28.000</td></tr>
-          <tr><th scope="row">Ukuran</th><td>Reguler (250 ml) / Large (350 ml)</td></tr>
-          <tr><th scope="row">Kadar Kafein</th><td>Sedang</td></tr>
-          <tr><th scope="row">Stok</th><td>Tersedia</td></tr>
-        </tbody>
-      </table>
-      <p><a href="form.html">Pesan Sekarang</a></p>
-    </article>
+    <section class="section">
+      <div class="container detail-stack">
+        <article class="detail-card" id="cappuccino">
+          <figure class="detail-media">
+            <img src="img/cappuccino.jpg" alt="Foto secangkir cappuccino dengan busa susu" width="320" height="320">
+            <figcaption>Cappuccino Single Shot</figcaption>
+          </figure>
+          <div class="detail-info">
+            <span class="badge">Kopi</span>
+            <h2>Cappuccino</h2>
+            <p>Espresso tunggal dengan steamed milk dan busa susu tebal. Rasa seimbang, sedikit cokelat, lembut.</p>
+            <table class="spec-table">
+              <caption>Spesifikasi Cappuccino</caption>
+              <tbody>
+                <tr><th scope="row">Kategori</th><td>Kopi</td></tr>
+                <tr><th scope="row">Harga</th><td>Rp 28.000</td></tr>
+                <tr><th scope="row">Ukuran</th><td>Reguler (250 ml) / Large (350 ml)</td></tr>
+                <tr><th scope="row">Kadar Kafein</th><td>Sedang</td></tr>
+                <tr><th scope="row">Stok</th><td>Tersedia</td></tr>
+              </tbody>
+            </table>
+            <a class="btn btn-primary" href="form.html">Pesan Sekarang</a>
+          </div>
+        </article>
 
-    <article id="latte">
-      <h3>Latte</h3>
-      <figure>
-        <img src="img/latte.svg" alt="Gelas tinggi berisi kopi susu latte" width="240" height="240">
-        <figcaption>Latte Susu Almond</figcaption>
-      </figure>
-      <p>Espresso dengan steamed milk dan susu almond, rasa lembut serta hint manis alami.</p>
-      <table>
-        <caption>Spesifikasi Latte</caption>
-        <tbody>
-          <tr><th scope="row">Kategori</th><td>Kopi</td></tr>
-          <tr><th scope="row">Harga</th><td>Rp 30.000</td></tr>
-          <tr><th scope="row">Ukuran</th><td>Reguler (300 ml) / Large (400 ml)</td></tr>
-          <tr><th scope="row">Kadar Kafein</th><td>Sedang</td></tr>
-          <tr><th scope="row">Stok</th><td>Tersedia</td></tr>
-        </tbody>
-      </table>
-      <p><a href="form.html">Pesan Sekarang</a></p>
-    </article>
+        <article class="detail-card" id="latte">
+          <figure class="detail-media">
+            <img src="img/latte.jpg" alt="Foto segelas latte kopi susu" width="320" height="320">
+            <figcaption>Latte Susu Almond</figcaption>
+          </figure>
+          <div class="detail-info">
+            <span class="badge">Kopi</span>
+            <h2>Latte</h2>
+            <p>Espresso dengan steamed milk dan susu almond, rasa lembut serta hint manis alami.</p>
+            <table class="spec-table">
+              <caption>Spesifikasi Latte</caption>
+              <tbody>
+                <tr><th scope="row">Kategori</th><td>Kopi</td></tr>
+                <tr><th scope="row">Harga</th><td>Rp 30.000</td></tr>
+                <tr><th scope="row">Ukuran</th><td>Reguler (300 ml) / Large (400 ml)</td></tr>
+                <tr><th scope="row">Kadar Kafein</th><td>Sedang</td></tr>
+                <tr><th scope="row">Stok</th><td>Tersedia</td></tr>
+              </tbody>
+            </table>
+            <a class="btn btn-primary" href="form.html">Pesan Sekarang</a>
+          </div>
+        </article>
 
-    <article id="croissant">
-      <h3>Croissant Cokelat</h3>
-      <figure>
-        <img src="img/croissant.svg" alt="Croissant cokelat yang renyah dengan isian cokelat" width="240" height="240">
-        <figcaption>Croissant Cokelat Belgium</figcaption>
-      </figure>
-      <p>Adonan puff pastry berlapis dengan isian cokelat Belgium 70%. Dipanggang setiap pukul 07.00.</p>
-      <table>
-        <caption>Spesifikasi Croissant Cokelat</caption>
-        <tbody>
-          <tr><th scope="row">Kategori</th><td>Pastry</td></tr>
-          <tr><th scope="row">Harga</th><td>Rp 25.000</td></tr>
-          <tr><th scope="row">Berat</th><td>90 gram</td></tr>
-          <tr><th scope="row">Kadar Kafein</th><td>Tidak ada</td></tr>
-          <tr><th scope="row">Stok</th><td>Habis pukul 15.00 saat Ramadan</td></tr>
-        </tbody>
-      </table>
-      <p><a href="form.html">Pesan Sekarang</a></p>
-    </article>
+        <article class="detail-card" id="croissant">
+          <figure class="detail-media">
+            <img src="img/croissant.jpg" alt="Foto croissant cokelat di atas piring" width="320" height="320">
+            <figcaption>Croissant Cokelat Belgium</figcaption>
+          </figure>
+          <div class="detail-info">
+            <span class="badge">Pastry</span>
+            <h2>Croissant Cokelat</h2>
+            <p>Adonan puff pastry berlapis dengan isian cokelat Belgium 70%. Dipanggang setiap pukul 07.00.</p>
+            <table class="spec-table">
+              <caption>Spesifikasi Croissant Cokelat</caption>
+              <tbody>
+                <tr><th scope="row">Kategori</th><td>Pastry</td></tr>
+                <tr><th scope="row">Harga</th><td>Rp 25.000</td></tr>
+                <tr><th scope="row">Berat</th><td>90 gram</td></tr>
+                <tr><th scope="row">Kadar Kafein</th><td>Tidak ada</td></tr>
+                <tr><th scope="row">Stok</th><td>Habis pukul 15.00 saat Ramadan</td></tr>
+              </tbody>
+            </table>
+            <a class="btn btn-primary" href="form.html">Pesan Sekarang</a>
+          </div>
+        </article>
 
-    <article id="tart">
-      <h3>Tart Berry</h3>
-      <figure>
-        <img src="img/tart.svg" alt="Potongan tart buah beri di atas kertas berlapis kue" width="240" height="240">
-        <figcaption>Tart Berry Campur</figcaption>
-      </figure>
-      <p>Kue tart blind-baked dengan krim pastry dan campuran beri stroberi, blueberry, dan raspberry.</p>
-      <table>
-        <caption>Spesifikasi Tart Berry</caption>
-        <tbody>
-          <tr><th scope="row">Kategori</th><td>Pastry</td></tr>
-          <tr><th scope="row">Harga</th><td>Rp 32.000</td></tr>
-          <tr><th scope="row">Berat</th><td>120 gram</td></tr>
-          <tr><th scope="row">Kadar Kafein</th><td>Tidak ada</td></tr>
-          <tr><th scope="row">Stok</th><td>Tersedia</td></tr>
-        </tbody>
-      </table>
-      <p><a href="form.html">Pesan Sekarang</a></p>
-    </article>
+        <article class="detail-card" id="tiramisu">
+          <figure class="detail-media">
+            <img src="img/tiramisu.jpg" alt="Foto potongan tiramisu dengan taburan kakao" width="320" height="320">
+            <figcaption>Tiramisu Kopi</figcaption>
+          </figure>
+          <div class="detail-info">
+            <span class="badge">Pastry</span>
+            <h2>Tiramisu</h2>
+            <p>Dessert kopi berlapis mascarpone lembut, ladyfinger, dan taburan kakao.</p>
+            <table class="spec-table">
+              <caption>Spesifikasi Tiramisu</caption>
+              <tbody>
+                <tr><th scope="row">Kategori</th><td>Pastry</td></tr>
+                <tr><th scope="row">Harga</th><td>Rp 32.000</td></tr>
+                <tr><th scope="row">Berat</th><td>120 gram</td></tr>
+                <tr><th scope="row">Kadar Kafein</th><td>Rendah</td></tr>
+                <tr><th scope="row">Stok</th><td>Tersedia</td></tr>
+              </tbody>
+            </table>
+            <a class="btn btn-primary" href="form.html">Pesan Sekarang</a>
+          </div>
+        </article>
+      </div>
+    </section>
   </main>
 
-  <footer>
-    <p>NISCALA - Jl. Kopi Nusantara No. 12, Bandung</p>
-    <p>Jam buka 08.00 - 21.00 | WhatsApp: 0812-1000-2000</p>
-    <p><a href="form.html">Pesan Sekarang</a> | <a href="index.html">Kembali ke Beranda</a></p>
-    <p><small>&copy; 2026 NISCALA. Tugas Pemrograman Web - BAB 2 HTML.</small></p>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h2>NISCALA</h2>
+        <p>Jl. Munjul Jaya Permai, Purwakarta, Jawa Barat 41117</p>
+      </div>
+      <div>
+        <h2>Jam Buka</h2>
+        <p>Setiap hari<br>08.00 - 21.00</p>
+      </div>
+      <div>
+        <h2>Kontak</h2>
+        <p>WhatsApp: 0812-1000-2000</p>
+        <a href="form.html">Pesan Sekarang</a>
+      </div>
+    </div>
   </footer>
 </body>
 </html>
