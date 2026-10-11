@@ -3,153 +3,163 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NISCALA - Detail Produk</title>
+  <title>NISCALA - Daftar Menu</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a class="brand" href="index.html" aria-label="NISCALA beranda">NISCALA</a>
-      <nav class="main-nav" aria-label="Navigasi utama">
-        <ul>
-          <li><a href="index.html">Beranda</a></li>
-          <li><a href="index.html#daftar-produk">Daftar Produk</a></li>
-          <li><a class="nav-cta" href="form.html">Pesan Sekarang</a></li>
+  <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top" aria-label="Navigasi utama">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">NISCALA</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuUtama"
+              aria-controls="menuUtama" aria-expanded="false" aria-label="Buka menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menuUtama">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+          <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="detail.html">Daftar Menu</a></li>
+          <li class="nav-item"><a class="btn btn-primary ms-lg-2" href="form.html">Pesan Sekarang</a></li>
         </ul>
-      </nav>
+      </div>
     </div>
-  </header>
+  </nav>
 
   <main>
-    <section class="page-hero">
+    <section class="py-5 bg-soft">
       <div class="container">
-        <span class="eyebrow">Detail Produk</span>
-        <h1>Kenali menu sebelum memesan.</h1>
-        <p>Berikut rincian setiap produk NISCALA. Pilih tombol <strong>Pesan Sekarang</strong> untuk melanjutkan ke form pemesanan.</p>
-        <nav class="pill-nav" aria-label="Lompat ke produk">
-          <ul>
-            <li><a href="#cappuccino">Cappuccino</a></li>
-            <li><a href="#latte">Latte</a></li>
-            <li><a href="#croissant">Croissant Cokelat</a></li>
-            <li><a href="#tiramisu">Tiramisu</a></li>
-          </ul>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-2">
+            <li class="breadcrumb-item"><a href="index.html">Beranda</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Daftar Menu</li>
+          </ol>
         </nav>
+        <h1 class="fw-bold">Daftar Menu</h1>
+        <p class="text-secondary mb-0">Rincian setiap produk NISCALA. Pilih kategori, lalu tekan Pesan untuk melanjutkan ke form pemesanan.</p>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container detail-stack">
-        <article class="detail-card" id="cappuccino">
-          <figure class="detail-media">
-            <img src="img/cappuccino.jpg" alt="Foto secangkir cappuccino dengan busa susu" width="320" height="320">
-            <figcaption>Cappuccino Single Shot</figcaption>
-          </figure>
-          <div class="detail-info">
-            <span class="badge">Kopi</span>
-            <h2>Cappuccino</h2>
-            <p>Espresso tunggal dengan steamed milk dan busa susu tebal. Rasa seimbang, sedikit cokelat, lembut.</p>
-            <table class="spec-table">
-              <caption>Spesifikasi Cappuccino</caption>
-              <tbody>
-                <tr><th scope="row">Kategori</th><td>Kopi</td></tr>
-                <tr><th scope="row">Harga</th><td>Rp 28.000</td></tr>
-                <tr><th scope="row">Ukuran</th><td>Reguler (250 ml) / Large (350 ml)</td></tr>
-                <tr><th scope="row">Kadar Kafein</th><td>Sedang</td></tr>
-                <tr><th scope="row">Stok</th><td>Tersedia</td></tr>
-              </tbody>
-            </table>
-            <a class="btn btn-primary" href="form.html">Pesan Sekarang</a>
-          </div>
-        </article>
+    <section class="menu-board py-5">
+      <div class="container">
+        <!-- Ikon -->
+        <svg width="0" height="0" class="position-absolute" aria-hidden="true">
+          <symbol id="ikon-kopi" viewBox="0 0 32 40">
+            <rect x="3" y="4" width="26" height="4" rx="1" fill="currentColor"/>
+            <path d="M5 8h22l-3 28H8z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M6.5 24h19L24 36H8z" fill="currentColor"/>
+          </symbol>
+          <symbol id="ikon-pastry" viewBox="0 0 32 40">
+            <path d="M3 34V16l26-6v24z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M3 25l26-6" stroke="currentColor" stroke-width="2.5"/>
+          </symbol>
+        </svg>
 
-        <article class="detail-card" id="latte">
-          <figure class="detail-media">
-            <img src="img/latte.jpg" alt="Foto segelas latte kopi susu" width="320" height="320">
-            <figcaption>Latte Susu Almond</figcaption>
-          </figure>
-          <div class="detail-info">
-            <span class="badge">Kopi</span>
-            <h2>Latte</h2>
-            <p>Espresso dengan steamed milk dan susu almond, rasa lembut serta hint manis alami.</p>
-            <table class="spec-table">
-              <caption>Spesifikasi Latte</caption>
-              <tbody>
-                <tr><th scope="row">Kategori</th><td>Kopi</td></tr>
-                <tr><th scope="row">Harga</th><td>Rp 30.000</td></tr>
-                <tr><th scope="row">Ukuran</th><td>Reguler (300 ml) / Large (400 ml)</td></tr>
-                <tr><th scope="row">Kadar Kafein</th><td>Sedang</td></tr>
-                <tr><th scope="row">Stok</th><td>Tersedia</td></tr>
-              </tbody>
-            </table>
-            <a class="btn btn-primary" href="form.html">Pesan Sekarang</a>
-          </div>
-        </article>
+        <!-- Tab kategori -->
+        <div class="menu-tabs nav nav-fill mb-4" role="tablist" aria-label="Kategori menu">
+          <button type="button" class="nav-link active" role="tab" aria-selected="true" data-kategori="">Semua</button>
+          <button type="button" class="nav-link" role="tab" aria-selected="false" data-kategori="Kopi">Kopi</button>
+          <button type="button" class="nav-link" role="tab" aria-selected="false" data-kategori="Pastry">Pastry</button>
+        </div>
 
-        <article class="detail-card" id="croissant">
-          <figure class="detail-media">
-            <img src="img/croissant.jpg" alt="Foto croissant cokelat di atas piring" width="320" height="320">
-            <figcaption>Croissant Cokelat Belgium</figcaption>
-          </figure>
-          <div class="detail-info">
-            <span class="badge">Pastry</span>
-            <h2>Croissant Cokelat</h2>
-            <p>Adonan puff pastry berlapis dengan isian cokelat Belgium 70%. Dipanggang setiap pukul 07.00.</p>
-            <table class="spec-table">
-              <caption>Spesifikasi Croissant Cokelat</caption>
-              <tbody>
-                <tr><th scope="row">Kategori</th><td>Pastry</td></tr>
-                <tr><th scope="row">Harga</th><td>Rp 25.000</td></tr>
-                <tr><th scope="row">Berat</th><td>90 gram</td></tr>
-                <tr><th scope="row">Kadar Kafein</th><td>Tidak ada</td></tr>
-                <tr><th scope="row">Stok</th><td>Habis pukul 15.00 saat Ramadan</td></tr>
-              </tbody>
-            </table>
-            <a class="btn btn-primary" href="form.html">Pesan Sekarang</a>
+        <!-- Daftar menu: 1 kolom di mobile, 2 kolom di desktop -->
+        <div class="row row-cols-1 row-cols-md-2 px-md-3" id="daftarMenu">
+          <div class="col" id="cappuccino" data-kategori="Kopi">
+            <div class="menu-item d-flex align-items-center gap-3 py-3">
+              <svg class="ikon" aria-hidden="true"><use href="#ikon-kopi"></use></svg>
+              <div class="flex-grow-1">
+                <div class="fw-bold text-uppercase font-monospace">Cappuccino</div>
+                <div class="small font-monospace">Espresso, steamed milk, busa tebal</div>
+                <div class="small font-monospace">Rp 28.000 </div>
+              </div>
+              <a class="btn btn-sm btn-dark" href="form.html?produk=cappuccino">Pesan</a>
+            </div>
           </div>
-        </article>
-
-        <article class="detail-card" id="tiramisu">
-          <figure class="detail-media">
-            <img src="img/tiramisu.jpg" alt="Foto potongan tiramisu dengan taburan kakao" width="320" height="320">
-            <figcaption>Tiramisu Kopi</figcaption>
-          </figure>
-          <div class="detail-info">
-            <span class="badge">Pastry</span>
-            <h2>Tiramisu</h2>
-            <p>Dessert kopi berlapis mascarpone lembut, ladyfinger, dan taburan kakao.</p>
-            <table class="spec-table">
-              <caption>Spesifikasi Tiramisu</caption>
-              <tbody>
-                <tr><th scope="row">Kategori</th><td>Pastry</td></tr>
-                <tr><th scope="row">Harga</th><td>Rp 32.000</td></tr>
-                <tr><th scope="row">Berat</th><td>120 gram</td></tr>
-                <tr><th scope="row">Kadar Kafein</th><td>Rendah</td></tr>
-                <tr><th scope="row">Stok</th><td>Tersedia</td></tr>
-              </tbody>
-            </table>
-            <a class="btn btn-primary" href="form.html">Pesan Sekarang</a>
+          <div class="col" id="latte" data-kategori="Kopi">
+            <div class="menu-item d-flex align-items-center gap-3 py-3">
+              <svg class="ikon" aria-hidden="true"><use href="#ikon-kopi"></use></svg>
+              <div class="flex-grow-1">
+                <div class="fw-bold text-uppercase font-monospace">Latte</div>
+                <div class="small font-monospace">Espresso, steamed milk, susu almond</div>
+                <div class="small font-monospace">Rp 30.000 </div>
+              </div>
+              <a class="btn btn-sm btn-dark" href="form.html?produk=latte">Pesan</a>
+            </div>
           </div>
-        </article>
+          <div class="col" id="croissant" data-kategori="Pastry">
+            <div class="menu-item d-flex align-items-center gap-3 py-3">
+              <svg class="ikon" aria-hidden="true"><use href="#ikon-pastry"></use></svg>
+              <div class="flex-grow-1">
+                <div class="fw-bold text-uppercase font-monospace">Croissant Cokelat </div>
+                <div class="small font-monospace">Puff pastry, cokelat Belgium 70%</div>
+                <div class="small font-monospace">Rp 25.000 </div>
+              </div>
+              <a class="btn btn-sm btn-dark" href="form.html?produk=croissant">Pesan</a>
+            </div>
+          </div>
+          <div class="col" id="tiramisu" data-kategori="Pastry">
+            <div class="menu-item d-flex align-items-center gap-3 py-3">
+              <svg class="ikon" aria-hidden="true"><use href="#ikon-pastry"></use></svg>
+              <div class="flex-grow-1">
+                <div class="fw-bold text-uppercase font-monospace">Tiramisu</div>
+                <div class="small font-monospace">Mascarpone, ladyfinger, kakao</div>
+                <div class="small font-monospace">Rp 32.000 </div>
+              </div>
+              <a class="btn btn-sm btn-dark" href="form.html?produk=tiramisu">Pesan</a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <h2>NISCALA</h2>
-        <p>Jl. Munjul Jaya Permai, Purwakarta, Jawa Barat 41117</p>
-      </div>
-      <div>
-        <h2>Jam Buka</h2>
-        <p>Setiap hari<br>08.00 - 21.00</p>
-      </div>
-      <div>
-        <h2>Kontak</h2>
-        <p>WhatsApp: 0812-1000-2000</p>
-        <a href="form.html">Pesan Sekarang</a>
+  <footer class="site-footer py-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <h2>NISCALA</h2>
+          <p class="mb-0">Jl. Munjul Jaya Permai, Purwakarta, Jawa Barat 41117</p>
+        </div>
+        <div class="col-6 col-md-4">
+          <h2>Jam Buka</h2>
+          <p class="mb-0">Setiap hari<br>08.00 - 21.00</p>
+        </div>
+        <div class="col-6 col-md-4">
+          <h2>Kontak</h2>
+          <p class="mb-1">WhatsApp: 0812-1000-2000</p>
+          <a href="form.html">Pesan Sekarang</a>
+        </div>
       </div>
     </div>
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Tab kategori: tampilkan hanya menu pada kategori terpilih
+    const tabs = document.querySelectorAll('.menu-tabs .nav-link');
+    const item = document.querySelectorAll('#daftarMenu > .col');
+
+    function pilihKategori(kategori) {
+      tabs.forEach(function (t) {
+        const aktif = t.dataset.kategori === kategori;
+        t.classList.toggle('active', aktif);
+        t.setAttribute('aria-selected', aktif);
+      });
+      item.forEach(function (el) {
+        el.classList.toggle('d-none', kategori !== '' && el.dataset.kategori !== kategori);
+      });
+    }
+    tabs.forEach(function (t) {
+      t.addEventListener('click', function () { pilihKategori(t.dataset.kategori); });
+    });
+
+    // Tautan seperti detail.html#latte: pastikan item tampil lalu gulir ke sana
+    if (location.hash) {
+      const target = document.querySelector(location.hash);
+      if (target && target.dataset.kategori) {
+        pilihKategori('');
+        target.scrollIntoView();
+      }
+    }
+  </script>
 </body>
 </html>
