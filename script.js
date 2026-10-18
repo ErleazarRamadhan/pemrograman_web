@@ -48,3 +48,26 @@ const katalogProduk = [
     deskripsi: "Pastry berlapis dengan custard lembut dan kismis."
   }
 ];
+
+function renderKatalog(data) {
+  const container = document.querySelector("#katalog-container");
+  const formatterHarga = new Intl.NumberFormat("id-ID");
+
+  container.innerHTML = data.map((produk) => `
+    <div class="col">
+      <article class="card product-card h-100 border-0 shadow-sm">
+        <div class="ratio ratio-4x3">
+          <img src="${produk.gambar}" class="card-img-top" alt="${produk.nama}">
+        </div>
+        <div class="card-body d-flex flex-column">
+          <span class="badge ${produk.kategori === "Kopi" ? "text-bg-primary" : "text-bg-warning"} align-self-start mb-2">${produk.kategori}</span>
+          <h3 class="h5">${produk.nama}</h3>
+          <p class="small text-secondary">${produk.deskripsi}</p>
+          <span class="fw-bold text-primary mt-auto">Rp ${formatterHarga.format(produk.harga)}</span>
+        </div>
+      </article>
+    </div>
+  `).join("");
+}
+
+renderKatalog(katalogProduk);
