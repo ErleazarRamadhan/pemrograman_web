@@ -70,4 +70,25 @@ function renderKatalog(data) {
   `).join("");
 }
 
+function filterKategori(kategori) {
+  const produkTersaring = kategori === "Semua"
+    ? katalogProduk
+    : katalogProduk.filter((produk) => produk.kategori === kategori);
+
+  renderKatalog(produkTersaring);
+}
+
+document.querySelectorAll("[data-filter-kategori]").forEach((tombol) => {
+  tombol.addEventListener("click", () => {
+    document.querySelectorAll("[data-filter-kategori]").forEach((item) => {
+      const aktif = item === tombol;
+      item.classList.toggle("btn-primary", aktif);
+      item.classList.toggle("btn-outline-primary", !aktif);
+      item.setAttribute("aria-pressed", aktif);
+    });
+
+    filterKategori(tombol.dataset.filterKategori);
+  });
+});
+
 renderKatalog(katalogProduk);
