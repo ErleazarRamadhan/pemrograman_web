@@ -2,17 +2,6 @@
 
 ## Niscala
 
-**STATUS: FINAL (MVP Tahap 5 - Interaktif)**
-
-| | |
-|---|---|
-| **Nama Produk** | Niscala |
-| **Versi Dokumen** | v1.0 |
-| **Disusun oleh** | Erleazar Pandita Ramadhan (Pengembang) |
-| **Untuk** | Proyek Kuliah Pemrograman Web (Penilaian) |
-| **Tanggal** | 18 Oktober 2026 |
-| **Dokumen Terkait** | Instruksi Tugas Perkuliahan Bab 2 (HTML) s/d Bab 5 (Javascript & Jquery) |
-
 # 1. Ringkasan Produk (Overview)
 
 Kedai kopi dan pastry sering kali mengandalkan buku menu fisik yang menyulitkan pembaruan data secara instan dan membatasi pelanggan untuk melihat variasi produk dari jarak jauh. Tanpa sistem pencatatan pemesanan mandiri yang terpusat, pengumpulan pesanan rentan akan miskomunikasi dan tidak terorganisir dengan rapi.
