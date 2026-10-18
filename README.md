@@ -43,7 +43,7 @@ Data pesanan hanya disimulasikan di browser dan tidak disimpan ke server atau da
 
 ## Dokumentasi Tugas
 
-- Simpan screenshot kondisi sebelum dan sesudah interaksi di `docs/screenshots/`.
+- Daftar kondisi dan nama file screenshot yang perlu dikumpulkan tersedia di [`docs/screenshots/README.md`](docs/screenshots/README.md).
 - Tambahkan tautan video demonstrasi interaksi di sini setelah video diunggah.
 - Dokumen kebutuhan: `prd.md`.
 - Panduan visual: `stylelguide.md`.
