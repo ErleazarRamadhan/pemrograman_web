@@ -78,17 +78,43 @@ function filterKategori(kategori) {
   renderKatalog(produkTersaring);
 }
 
-document.querySelectorAll("[data-filter-kategori]").forEach((tombol) => {
-  tombol.addEventListener("click", () => {
-    document.querySelectorAll("[data-filter-kategori]").forEach((item) => {
-      const aktif = item === tombol;
-      item.classList.toggle("btn-primary", aktif);
-      item.classList.toggle("btn-outline-primary", !aktif);
-      item.setAttribute("aria-pressed", aktif);
+if (document.querySelector("#katalog-container")) {
+  document.querySelectorAll("[data-filter-kategori]").forEach((tombol) => {
+    tombol.addEventListener("click", () => {
+      document.querySelectorAll("[data-filter-kategori]").forEach((item) => {
+        const aktif = item === tombol;
+        item.classList.toggle("btn-primary", aktif);
+        item.classList.toggle("btn-outline-primary", !aktif);
+        item.setAttribute("aria-pressed", aktif);
+      });
+
+      filterKategori(tombol.dataset.filterKategori);
+    });
+  });
+
+  renderKatalog(katalogProduk);
+}
+
+if (document.querySelector("#formPesan")) {
+  $(function () {
+    $("#nama").on("input", function () {
+      const nama = $(this).val().trim();
+      $(this).toggleClass("is-invalid", nama === "" || /\d/.test(nama));
     });
 
-    filterKategori(tombol.dataset.filterKategori);
-  });
-});
+    $("#formPesan").on("submit", function (event) {
+      event.preventDefault();
 
-renderKatalog(katalogProduk);
+      const nama = $("#nama").val().trim();
+      const namaTidakValid = nama === "" || /\d/.test(nama);
+      const jumlahTidakValid = Number($("#jumlah").val()) <= 0;
+
+      $("#nama").toggleClass("is-invalid", namaTidakValid);
+      $("#jumlah").toggleClass("is-invalid", jumlahTidakValid);
+
+      if (namaTidakValid || jumlahTidakValid) return;
+
+      $("#nama, #jumlah").removeClass("is-invalid");
+    });
+  });
+}
