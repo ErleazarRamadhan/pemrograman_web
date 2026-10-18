@@ -4,7 +4,7 @@ const katalogProduk = [
     nama: "Cappuccino",
     kategori: "Kopi",
     harga: 28000,
-    gambar: "https://placehold.co/600x400?text=Cappuccino",
+    gambar: "img/cappuccino.jpg",
     deskripsi: "Espresso dengan steamed milk dan busa susu yang lembut."
   },
   {
@@ -12,7 +12,7 @@ const katalogProduk = [
     nama: "Niscala Latte",
     kategori: "Kopi",
     harga: 30000,
-    gambar: "https://placehold.co/600x400?text=Niscala+Latte",
+    gambar: "img/latte.jpg",
     deskripsi: "Perpaduan espresso dan susu hangat dengan rasa seimbang."
   },
   {
@@ -20,7 +20,7 @@ const katalogProduk = [
     nama: "Kopi Gula Aren",
     kategori: "Kopi",
     harga: 32000,
-    gambar: "https://placehold.co/600x400?text=Kopi+Gula+Aren",
+    gambar: "img/kopi-susu-gula-aren.jpg",
     deskripsi: "Kopi susu dingin dengan manis alami gula aren."
   },
   {
@@ -28,7 +28,7 @@ const katalogProduk = [
     nama: "Croissant Cokelat",
     kategori: "Pastry",
     harga: 25000,
-    gambar: "https://placehold.co/600x400?text=Croissant+Cokelat",
+    gambar: "img/croissant.jpg",
     deskripsi: "Croissant renyah berlapis dengan isian cokelat."
   },
   {
@@ -36,7 +36,7 @@ const katalogProduk = [
     nama: "Tiramisu",
     kategori: "Pastry",
     harga: 32000,
-    gambar: "https://placehold.co/600x400?text=Tiramisu",
+    gambar: "img/tiramisu.jpg",
     deskripsi: "Pastry lembut dengan krim mascarpone dan taburan kakao."
   },
   {
@@ -44,7 +44,7 @@ const katalogProduk = [
     nama: "Pain au Raisin",
     kategori: "Pastry",
     harga: 27000,
-    gambar: "https://placehold.co/600x400?text=Pain+au+Raisin",
+    gambar: "img/Pain_aux_raisins.jpg",
     deskripsi: "Pastry berlapis dengan custard lembut dan kismis."
   }
 ];
@@ -62,7 +62,8 @@ function renderKatalog(data) {
         <div class="card-body d-flex flex-column">
           <span class="badge ${produk.kategori === "Kopi" ? "text-bg-primary" : "text-bg-warning"} align-self-start mb-2">${produk.kategori}</span>
           <h3 class="h5">${produk.nama}</h3>
-          <p class="small text-secondary">${produk.deskripsi}</p>
+          <button type="button" class="btn btn-sm btn-outline-primary align-self-start mb-2 btn-detail-produk" aria-controls="detail-produk-${produk.id}">Lihat Detail</button>
+          <p id="detail-produk-${produk.id}" class="small text-secondary product-description" style="display: none;">${produk.deskripsi}</p>
           <span class="fw-bold text-primary mt-auto">Rp ${formatterHarga.format(produk.harga)}</span>
         </div>
       </article>
@@ -70,32 +71,79 @@ function renderKatalog(data) {
   `).join("");
 }
 
+function renderDaftarMenu(data) {
+  const container = document.querySelector("#daftarMenu");
+  const formatterHarga = new Intl.NumberFormat("id-ID");
+
+  container.innerHTML = data.map((produk) => `
+    <div class="col" id="menu-${produk.id}" data-kategori="${produk.kategori}">
+      <div class="menu-item d-flex align-items-center gap-3 py-3">
+        <svg class="ikon" aria-hidden="true"><use href="#ikon-${produk.kategori === "Kopi" ? "kopi" : "pastry"}"></use></svg>
+        <div class="flex-grow-1">
+          <div class="fw-bold text-uppercase font-monospace">${produk.nama}</div>
+          <div class="small font-monospace">${produk.deskripsi}</div>
+          <div class="small font-monospace">Rp ${formatterHarga.format(produk.harga)}</div>
+        </div>
+        <a class="btn btn-sm btn-dark" href="form.html?produk=${produk.id}">Pesan</a>
+      </div>
+    </div>
+  `).join("");
+}
+
+function renderProduk(data) {
+  if (document.querySelector("#katalog-container")) renderKatalog(data);
+  if (document.querySelector("#daftarMenu")) renderDaftarMenu(data);
+}
+
 function filterKategori(kategori) {
   const produkTersaring = kategori === "Semua"
     ? katalogProduk
     : katalogProduk.filter((produk) => produk.kategori === kategori);
 
-  renderKatalog(produkTersaring);
+  renderProduk(produkTersaring);
 }
 
 if (document.querySelector("#katalog-container")) {
-  document.querySelectorAll("[data-filter-kategori]").forEach((tombol) => {
-    tombol.addEventListener("click", () => {
-      document.querySelectorAll("[data-filter-kategori]").forEach((item) => {
-        const aktif = item === tombol;
-        item.classList.toggle("btn-primary", aktif);
-        item.classList.toggle("btn-outline-primary", !aktif);
-        item.setAttribute("aria-pressed", aktif);
-      });
+  $(document).on("click", ".btn-detail-produk", function () {
+    const deskripsi = $(this).closest(".card-body").find(".product-description");
+    const sedangTampil = deskripsi.is(":visible");
 
-      filterKategori(tombol.dataset.filterKategori);
-    });
+    deskripsi.slideToggle();
+    $(this).text(sedangTampil ? "Lihat Detail" : "Sembunyikan Detail");
   });
 
-  renderKatalog(katalogProduk);
 }
 
+document.querySelectorAll("[data-filter-kategori]").forEach((tombol) => {
+  tombol.addEventListener("click", () => {
+    document.querySelectorAll("[data-filter-kategori]").forEach((item) => {
+      const aktif = item === tombol;
+      if (item.classList.contains("nav-link")) {
+        item.classList.toggle("active", aktif);
+        item.setAttribute("aria-selected", aktif);
+      } else {
+        item.classList.toggle("btn-primary", aktif);
+        item.classList.toggle("btn-outline-primary", !aktif);
+      }
+      item.setAttribute("aria-pressed", aktif);
+    });
+
+    filterKategori(tombol.dataset.filterKategori);
+  });
+});
+
+renderProduk(katalogProduk);
+
 if (document.querySelector("#formPesan")) {
+  const pilihanProduk = document.querySelector("#produk");
+  katalogProduk.forEach((produk) => {
+    const opsi = document.createElement("option");
+    opsi.value = produk.id;
+    opsi.dataset.harga = produk.harga;
+    opsi.textContent = `${produk.nama} - Rp ${new Intl.NumberFormat("id-ID").format(produk.harga)}`;
+    pilihanProduk.append(opsi);
+  });
+
   $(function () {
     $("#nama").on("input", function () {
       const nama = $(this).val().trim();
@@ -115,6 +163,7 @@ if (document.querySelector("#formPesan")) {
       if (namaTidakValid || jumlahTidakValid) return;
 
       $("#nama, #jumlah").removeClass("is-invalid");
+      $("#notifikasiSukses").stop(true, true).fadeIn().delay(3000).fadeOut();
     });
   });
 }

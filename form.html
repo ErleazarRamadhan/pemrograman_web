@@ -72,10 +72,6 @@
                     <label for="produk" class="form-label">Produk *</label>
                     <select class="form-select" id="produk" name="produk" required>
                       <option value="">-- Pilih produk --</option>
-                      <option value="cappuccino" data-harga="28000">Cappuccino - Rp 28.000</option>
-                      <option value="latte" data-harga="30000">Latte - Rp 30.000</option>
-                      <option value="croissant" data-harga="25000">Croissant Cokelat - Rp 25.000</option>
-                      <option value="tiramisu" data-harga="32000">Tiramisu - Rp 32.000</option>
                     </select>
                     <div class="invalid-feedback">Pilih produk.</div>
                   </div>
@@ -102,6 +98,9 @@
                   Pesanan melalui website untuk makan di tempat. Untuk take away, silakan pesan langsung di kasir.
                 </p>
 
+                <div id="notifikasiSukses" class="alert alert-success" role="status" style="display: none;">
+                  Pesanan Berhasil!
+                </div>
                 <div class="d-flex flex-column flex-sm-row gap-2">
                   <button type="submit" class="btn btn-primary">Kirim Pesanan</button>
                   <button type="reset" class="btn btn-outline-primary">Reset Form</button>
@@ -186,7 +185,7 @@
       el.addEventListener('input', hitungRingkasan);
     });
 
-    // Pilih produk otomatis dari tombol "Pesan" di halaman Daftar Menu (form.html?produk=latte)
+    // Pilih produk otomatis dari tombol "Pesan" di halaman Daftar Menu (form.html?produk=id)
     const dipilih = new URLSearchParams(location.search).get('produk');
     if (dipilih) produk.value = dipilih;
     hitungRingkasan();

@@ -56,58 +56,13 @@
 
         <!-- Tab kategori -->
         <div class="menu-tabs nav nav-fill mb-4" role="tablist" aria-label="Kategori menu">
-          <button type="button" class="nav-link active" role="tab" aria-selected="true" data-kategori="">Semua</button>
-          <button type="button" class="nav-link" role="tab" aria-selected="false" data-kategori="Kopi">Kopi</button>
-          <button type="button" class="nav-link" role="tab" aria-selected="false" data-kategori="Pastry">Pastry</button>
+          <button type="button" class="nav-link active" role="tab" aria-selected="true" aria-pressed="true" data-filter-kategori="Semua">Semua</button>
+          <button type="button" class="nav-link" role="tab" aria-selected="false" aria-pressed="false" data-filter-kategori="Kopi">Kopi</button>
+          <button type="button" class="nav-link" role="tab" aria-selected="false" aria-pressed="false" data-filter-kategori="Pastry">Pastry</button>
         </div>
 
         <!-- Daftar menu: 1 kolom di mobile, 2 kolom di desktop -->
-        <div class="row row-cols-1 row-cols-md-2 px-md-3" id="daftarMenu">
-          <div class="col" id="cappuccino" data-kategori="Kopi">
-            <div class="menu-item d-flex align-items-center gap-3 py-3">
-              <svg class="ikon" aria-hidden="true"><use href="#ikon-kopi"></use></svg>
-              <div class="flex-grow-1">
-                <div class="fw-bold text-uppercase font-monospace">Cappuccino</div>
-                <div class="small font-monospace">Espresso, steamed milk, busa tebal</div>
-                <div class="small font-monospace">Rp 28.000 </div>
-              </div>
-              <a class="btn btn-sm btn-dark" href="form.html?produk=cappuccino">Pesan</a>
-            </div>
-          </div>
-          <div class="col" id="latte" data-kategori="Kopi">
-            <div class="menu-item d-flex align-items-center gap-3 py-3">
-              <svg class="ikon" aria-hidden="true"><use href="#ikon-kopi"></use></svg>
-              <div class="flex-grow-1">
-                <div class="fw-bold text-uppercase font-monospace">Latte</div>
-                <div class="small font-monospace">Espresso, steamed milk, susu almond</div>
-                <div class="small font-monospace">Rp 30.000 </div>
-              </div>
-              <a class="btn btn-sm btn-dark" href="form.html?produk=latte">Pesan</a>
-            </div>
-          </div>
-          <div class="col" id="croissant" data-kategori="Pastry">
-            <div class="menu-item d-flex align-items-center gap-3 py-3">
-              <svg class="ikon" aria-hidden="true"><use href="#ikon-pastry"></use></svg>
-              <div class="flex-grow-1">
-                <div class="fw-bold text-uppercase font-monospace">Croissant Cokelat </div>
-                <div class="small font-monospace">Puff pastry, cokelat Belgium 70%</div>
-                <div class="small font-monospace">Rp 25.000 </div>
-              </div>
-              <a class="btn btn-sm btn-dark" href="form.html?produk=croissant">Pesan</a>
-            </div>
-          </div>
-          <div class="col" id="tiramisu" data-kategori="Pastry">
-            <div class="menu-item d-flex align-items-center gap-3 py-3">
-              <svg class="ikon" aria-hidden="true"><use href="#ikon-pastry"></use></svg>
-              <div class="flex-grow-1">
-                <div class="fw-bold text-uppercase font-monospace">Tiramisu</div>
-                <div class="small font-monospace">Mascarpone, ladyfinger, kakao</div>
-                <div class="small font-monospace">Rp 32.000 </div>
-              </div>
-              <a class="btn btn-sm btn-dark" href="form.html?produk=tiramisu">Pesan</a>
-            </div>
-          </div>
-        </div>
+        <div class="row row-cols-1 row-cols-md-2 px-md-3" id="daftarMenu"></div>
       </div>
     </section>
   </main>
@@ -133,33 +88,7 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    // Tab kategori: tampilkan hanya menu pada kategori terpilih
-    const tabs = document.querySelectorAll('.menu-tabs .nav-link');
-    const item = document.querySelectorAll('#daftarMenu > .col');
-
-    function pilihKategori(kategori) {
-      tabs.forEach(function (t) {
-        const aktif = t.dataset.kategori === kategori;
-        t.classList.toggle('active', aktif);
-        t.setAttribute('aria-selected', aktif);
-      });
-      item.forEach(function (el) {
-        el.classList.toggle('d-none', kategori !== '' && el.dataset.kategori !== kategori);
-      });
-    }
-    tabs.forEach(function (t) {
-      t.addEventListener('click', function () { pilihKategori(t.dataset.kategori); });
-    });
-
-    // Tautan seperti detail.html#latte: pastikan item tampil lalu gulir ke sana
-    if (location.hash) {
-      const target = document.querySelector(location.hash);
-      if (target && target.dataset.kategori) {
-        pilihKategori('');
-        target.scrollIntoView();
-      }
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
+
