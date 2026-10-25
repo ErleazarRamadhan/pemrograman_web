@@ -1,0 +1,6 @@
+body { background: var(--bs-body-bg); color: var(--bs-body-color); }
+.hero-img { max-height: 380px; object-fit: cover; }
+.product-card img { object-fit: cover; }
+.product-card { transition: transform .18s ease, box-shadow .18s ease; }
+.product-card:hover { transform: translateY(-3px); }
+.form-control:focus, .form-select:focus { border-color: #0f5a43; box-shadow: 0 0 0 .25rem rgba(15, 90, 67, .2); }

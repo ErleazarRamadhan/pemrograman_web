@@ -1,49 +1,37 @@
 # NISCALA
 
-Aplikasi web katalog kopi dan pastry NISCALA. Proyek ini dibuat untuk tugas Pemrograman Web Bab 5 tentang JavaScript dan jQuery, menggunakan data produk dummy di sisi klien.
+Aplikasi katalog kopi dan pastry NISCALA yang dibangun dengan React dan Vite. Katalog menggunakan data lokal sebagai fondasi frontend yang akan dikembangkan lagi hingga Pekan 14 dan dihubungkan ke backend/API pada Pekan 11.
+
+## Menjalankan aplikasi
+
+```sh
+npm install
+npm run dev
+```
+
+Buka alamat yang ditampilkan Vite (default `http://localhost:5173`).
 
 ## Fitur
 
-- Menampilkan katalog produk yang sama di halaman Beranda, Daftar Menu, dan pilihan produk pada form.
-- Memfilter produk berdasarkan kategori Kopi dan Pastry.
-- Membuka dan menyembunyikan deskripsi kartu produk dengan animasi jQuery `slideToggle()`.
-- Memvalidasi nama pemesan dan jumlah produk sebelum form diproses.
-- Menampilkan notifikasi sukses dengan animasi `fadeIn()` dan `fadeOut()` jika validasi lolos.
-- Menyediakan form simulasi pesanan; take-away dilayani langsung di kasir.
+- Menampilkan katalog kopi dan pastry NISCALA dengan data menu yang relevan.
+- Memfilter menu menurut kategori.
+- Menambahkan menu melalui controlled form dan menghapus menu dari state React.
+- Membuka detail setiap menu serta melihat pesan kosong ketika daftar tidak berisi data.
+- Tampilan responsif yang melanjutkan identitas visual project sebelumnya.
 
-## Menjalankan Aplikasi
-
-1. Buka folder proyek ini di editor atau file explorer.
-2. Buka `index.html` di browser. Live Server juga dapat digunakan.
-3. Pastikan koneksi internet aktif agar Bootstrap dan jQuery dapat dimuat dari CDN.
-
-## Halaman
-
-- `index.html` — Beranda dan katalog produk dengan filter serta detail animasi.
-- `detail.html` — Daftar menu lengkap dengan filter kategori.
-- `form.html` — Form simulasi pemesanan dan ringkasan harga.
-
-## Struktur Proyek
+## Struktur
 
 ```text
-├── index.html
-├── detail.html
-├── form.html
-├── style.css
-├── script.js
-├── img/                  # Foto menu
-└── docs/screenshots/     # Dokumentasi tampilan
+src/
+├── components/  # Komponen UI React
+├── data/        # Data awal menu
+├── App.jsx      # State dan komposisi aplikasi
+└── main.jsx     # Entry point React
+img/             # Foto menu
 ```
 
-Data produk disimpan dalam array `katalogProduk` di `script.js`. Foto pada katalog merujuk ke file di folder `img/`.
+Perubahan data saat ini hanya disimpan di state browser dan akan di-reset saat halaman dimuat ulang. Integrasi backend/API direncanakan untuk tahap berikutnya.
 
-## Batasan
+## Bukti tugas
 
-Data pesanan hanya disimulasikan di browser dan tidak disimpan ke server atau database. Integrasi pembayaran online belum tersedia.
-
-## Dokumentasi Tugas
-
-- Daftar kondisi dan nama file screenshot yang perlu dikumpulkan tersedia di [`docs/screenshots/README.md`](docs/screenshots/README.md).
-- Tambahkan tautan video demonstrasi interaksi di sini setelah video diunggah.
-- Dokumen kebutuhan: `prd.md`.
-- Panduan visual: `stylelguide.md`.
+Simpan screenshot saat server Vite berjalan dan screenshot semua tampilan/tahapan di `docs/screenshots/` sebelum pengumpulan. Repository ini telah memiliki riwayat commit dari tahap sebelumnya; commit React menjadi commit lanjutan.
