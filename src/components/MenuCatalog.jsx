@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import FilterBar from './FilterBar.jsx';
 import ProductList from './ProductList.jsx';
 
-export default function MenuCatalog({ produk, onHapus }) {
+export default function MenuCatalog({ produk, onTambahKeranjang }) {
   const [filter, setFilter] = useState('Semua');
   const produkTerlihat = filter === 'Semua'
     ? produk
@@ -16,7 +16,7 @@ export default function MenuCatalog({ produk, onHapus }) {
           <p className="text-secondary mb-0">Menu kopi dan pastry NISCALA, diracik dan dibuat setiap hari.</p>
         </div>
         <FilterBar aktif={filter} onPilih={setFilter} />
-        <ProductList produk={produkTerlihat} onHapus={onHapus} />
+        <ProductList produk={produkTerlihat} onTambahKeranjang={onTambahKeranjang} />
       </div>
     </section>
   );
