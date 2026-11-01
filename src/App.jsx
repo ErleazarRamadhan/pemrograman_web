@@ -9,7 +9,23 @@ import Footer from './components/Footer.jsx';
 export default function App() {
   const [produk, setProduk] = useState(produkAwal);
 
- return <><Navbar /><main><Dashboard jumlahProduk={produk.length} /><ProductForm onTambah={(item) => setProduk((daftar) => [item, ...daftar])} />
-  <MenuCatalog produk={produk} onHapus={(id) => setProduk((daftar) => daftar.filter((item) => item.id !== id))} />
- </main><Footer /></>;
+  function tambahProduk(item) {
+    setProduk((daftar) => [item, ...daftar]);
+  }
+
+  function hapusProduk(id) {
+    setProduk((daftar) => daftar.filter((item) => item.id !== id));
+  }
+
+  return (
+    <>
+      <Navbar />
+      <main>
+        <Dashboard jumlahProduk={produk.length} />
+        <ProductForm onTambah={tambahProduk} />
+        <MenuCatalog produk={produk} onHapus={hapusProduk} />
+      </main>
+      <Footer />
+    </>
+  );
 }
