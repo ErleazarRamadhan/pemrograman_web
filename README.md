@@ -1,6 +1,6 @@
 # NISCALA
 
-Aplikasi katalog kopi dan pastry NISCALA yang dibangun dengan React dan Vite. Katalog menggunakan data lokal sebagai fondasi frontend yang akan dikembangkan lagi hingga Pekan 14 dan dihubungkan ke backend/API pada Pekan 11.
+Aplikasi informasi coffee shop dan pemesanan NISCALA yang dibangun dengan React dan Vite. Pengunjung dapat melihat menu, memilih pesanan untuk makan di tempat melalui QR code meja, dan melihat ulasan pelanggan. Pembayaran online belum tersedia.
 
 ## Menjalankan aplikasi
 
@@ -15,8 +15,10 @@ Buka alamat yang ditampilkan Vite (default `http://localhost:5173`).
 
 - Menampilkan katalog kopi dan pastry NISCALA dengan data menu yang relevan.
 - Memfilter menu menurut kategori.
-- Menambahkan menu melalui controlled form dan menghapus menu dari state React.
-- Membuka detail setiap menu serta melihat pesan kosong ketika daftar tidak berisi data.
+- Melihat detail menu dan menambah item ke ringkasan pesanan.
+- Mengaitkan pesanan dengan nomor meja melalui URL QR, misalnya `/?meja=5`.
+- Menampilkan ulasan pelanggan secara asinkron dari JSONPlaceholder dengan status loading, sukses, error, dan tombol coba lagi.
+- Mengarahkan pesanan take away ke kasir.
 - Tampilan responsif yang melanjutkan identitas visual project sebelumnya.
 
 ## Struktur
@@ -30,7 +32,7 @@ src/
 img/             # Foto menu
 ```
 
-Perubahan data saat ini hanya disimpan di state browser dan akan di-reset saat halaman dimuat ulang. Integrasi backend/API direncanakan untuk tahap berikutnya.
+Menu saat ini berasal dari data lokal. Pesanan hanya dicatat sementara di browser dan alur pembayaran akan ditambahkan pada tahap berikutnya.
 
 ## Bukti tugas
 
