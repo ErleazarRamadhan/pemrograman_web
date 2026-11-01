@@ -5,7 +5,7 @@ export default function UlasanSection() {
   const { data, status, pesanError, cobaLagi } = useUlasan();
 
   return (
-    <section className="py-5 bg-soft" id="ulasan">
+    <section className="py-5" id="ulasan">
       <div className="container">
         <h2 className="mb-4">Ulasan pelanggan</h2>
 
@@ -15,6 +15,7 @@ export default function UlasanSection() {
             <p className="mt-2 mb-0">Memuat ulasan...</p>
           </div>
         )}
+
 
         {status === 'error' && (
           <div className="alert alert-danger d-flex justify-content-between align-items-center" role="alert">
