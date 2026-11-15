@@ -36,4 +36,20 @@ Menu saat ini berasal dari data lokal. Pesanan hanya dicatat sementara di browse
 
 ## Bukti tugas
 
-Simpan screenshot saat server Vite berjalan dan screenshot semua tampilan/tahapan di `docs/screenshots/` sebelum pengumpulan. Repository ini telah memiliki riwayat commit dari tahap sebelumnya; commit React menjadi commit lanjutan.
+### Konsumsi API
+
+Aplikasi mengambil maksimal enam ulasan dari endpoint `https://jsonplaceholder.typicode.com/comments?_limit=6`. JSONPlaceholder dipilih sebagai mock API gratis untuk menampilkan contoh ulasan pelanggan pada website coffee shop tanpa memerlukan API key.
+
+Fungsi `ambilUlasan()` pada `src/hooks/useUlasan.js` mengambil data menggunakan `fetch()`, lalu mengatur status `loading`, `success`, atau `error`. Komponen `src/components/UlasanSection.jsx` menampilkan spinner saat loading, daftar kartu ulasan saat berhasil, serta pesan gagal dan tombol **Coba Lagi** saat terjadi error.
+
+### Screenshot
+
+Simpan tangkapan layar berikut di `docs/screenshots/`:
+
+- `ulasan-loading.png` — spinner dan teks “Memuat ulasan...”.
+- `ulasan-success.png` — kartu ulasan yang berhasil dimuat.
+- `ulasan-error.png` — pesan gagal dan tombol “Coba Lagi”.
+
+### Repository
+
+https://github.com/ErleazarRamadhan/pemrograman_web
