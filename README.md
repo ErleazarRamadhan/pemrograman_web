@@ -1,15 +1,45 @@
 # NISCALA
 
-Aplikasi informasi coffee shop dan pemesanan NISCALA yang dibangun dengan React dan Vite. Pengunjung dapat melihat menu, memilih pesanan untuk makan di tempat melalui QR code meja, dan melihat ulasan pelanggan. Pembayaran online belum tersedia.
+Aplikasi katalog dan pemesanan coffee shop NISCALA. Frontend React menampilkan menu kopi dan pastry dari REST API NestJS. Pada Bab 10, pengelolaan menu melalui halaman Admin menggunakan Prisma ORM dan PostgreSQL.
 
 ## Menjalankan aplikasi
 
-```sh
-npm install
-npm run dev
-```
+1. Jalankan PostgreSQL lokal. Di pgAdmin, buat login role `niscala_app` dengan password dan aktifkan **Can login?** serta **Create databases?**. Buat database `niscala` dengan owner `niscala_app`. Prisma Migrate memakai hak membuat database untuk basis data sementara saat menjalankan `migrate dev`.
+2. Dari folder utama proyek, buat `backend/.env` dan isi konfigurasi berikut dengan password lokal Anda. Gunakan percent-encoding untuk karakter khusus pada password, misalnya `@` menjadi `%40`. Git mengabaikan file ini.
 
-Buka alamat yang ditampilkan Vite (default `http://localhost:5173`).
+   ```dotenv
+   DATABASE_URL="postgresql://niscala_app:PASSWORD_ANDA@127.0.0.1:5432/niscala?schema=public"
+   ```
+
+3. Jalankan backend dari terminal pertama. Migrasi membuat tabel `Produk` dan memasukkan enam menu awal.
+
+   ```sh
+   cd backend
+   npm ci
+   npx prisma migrate dev
+   npm run start:dev
+   ```
+
+4. Jalankan frontend dari folder utama proyek di terminal kedua.
+
+   ```sh
+   npm ci
+   npm run dev
+   ```
+
+Buka `http://localhost:5173` untuk katalog atau klik **Admin** untuk mengelola menu. REST API berjalan di `http://localhost:3000/produk`.
+
+## REST API Produk
+
+| Metode | Endpoint | Operasi |
+| --- | --- | --- |
+| GET | `/produk` | Tampilkan semua produk |
+| GET | `/produk/:id` | Tampilkan satu produk |
+| POST | `/produk` | Tambahkan produk |
+| PATCH | `/produk/:id` | Ubah produk |
+| DELETE | `/produk/:id` | Hapus produk |
+
+Contoh permintaan ada di [produk.http](backend/produk.http). Untuk menguji persistensi, buat produk, catat ID pada respons, mulai ulang backend, lalu ambil produk dengan `GET /produk/:id`. Gunakan ID dari respons tersebut juga untuk mencoba PATCH dan DELETE.
 
 ## Fitur
 
@@ -32,9 +62,20 @@ src/
 img/             # Foto menu
 ```
 
-Menu saat ini berasal dari data lokal. Pesanan hanya dicatat sementara di browser dan alur pembayaran akan ditambahkan pada tahap berikutnya.
+Data menu tersimpan di PostgreSQL. Ringkasan pesanan disimpan sementara di browser.
 
 ## Bukti tugas
+
+### Bab 10 — PostgreSQL dan Prisma
+
+| Bukti | Screenshot |
+| --- | --- |
+| Database `niscala` dan role `niscala_app` di pgAdmin | [Setup PostgreSQL](docs/screenshots/bab10-postgresql.png) |
+| Model `Produk`, status migrasi, dan pembacaan tabel | [Schema dan migrasi](docs/screenshots/bab10-schema-migrasi.png) |
+| Provider dan registrasinya di modul Produk | [PrismaService](docs/screenshots/bab10-prisma-service.png) |
+| CRUD HTTP dan data yang tetap ada setelah backend dimulai ulang | [CRUD dan persistensi](docs/screenshots/bab10-crud-persistensi.png) |
+| Katalog desktop (1440 × 1050) | [Desktop](docs/screenshots/bab10-desktop.png) |
+| Katalog mobile (390 × 844) | [Mobile](docs/screenshots/bab10-mobile.png) |
 
 ### Konsumsi API
 
