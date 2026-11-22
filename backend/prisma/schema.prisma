@@ -1,0 +1,24 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum KategoriProduk {
+  Kopi
+  Pastry
+}
+
+model Produk {
+  id        Int            @id @default(autoincrement())
+  nama      String         @db.VarChar(60)
+  kategori  KategoriProduk
+  harga     Int
+  deskripsi String         @db.VarChar(180)
+  tersedia  Boolean        @default(true)
+  gambar    String
+  dibuatPada DateTime      @default(now())
+}
