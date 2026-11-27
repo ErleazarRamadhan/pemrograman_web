@@ -1,10 +1,13 @@
-const BASE = 'http://localhost:3000/produk';
+const BASE = 'http://localhost:3000';
 
-async function request(path = '', options = {}) {
+async function request(path, options = {}, token) {
   let res;
   try {
     res = await fetch(`${BASE}${path}`, {
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      },
       ...options,
     });
   } catch {
@@ -18,7 +21,8 @@ async function request(path = '', options = {}) {
   return data;
 }
 
-export const getProduk = () => request();
-export const tambahProduk = (data) => request('', { method: 'POST', body: JSON.stringify(data) });
-export const ubahProduk = (id, data) => request(`/${id}`, { method: 'PATCH', body: JSON.stringify(data) });
-export const hapusProduk = (id) => request(`/${id}`, { method: 'DELETE' });
+export const getProduk = () => request('/produk');
+export const tambahProduk = (data, token) => request('/produk', { method: 'POST', body: JSON.stringify(data) }, token);
+export const ubahProduk = (id, data, token) => request(`/produk/${id}`, { method: 'PATCH', body: JSON.stringify(data) }, token);
+export const hapusProduk = (id, token) => request(`/produk/${id}`, { method: 'DELETE' }, token);
+export const kirimKredensial = (aksi, data) => request(`/auth/${aksi}`, { method: 'POST', body: JSON.stringify(data) });

@@ -1,6 +1,6 @@
 # NISCALA
 
-Aplikasi katalog dan pemesanan coffee shop NISCALA. Frontend React menampilkan menu kopi dan pastry dari REST API NestJS. Pada Bab 10, pengelolaan menu melalui halaman Admin menggunakan Prisma ORM dan PostgreSQL.
+Aplikasi katalog dan pemesanan coffee shop NISCALA. Frontend React menampilkan menu kopi dan pastry dari REST API NestJS. Pengelolaan menu melalui halaman Admin menggunakan JWT, Prisma ORM, dan PostgreSQL.
 
 ## Menjalankan aplikasi
 
@@ -9,15 +9,19 @@ Aplikasi katalog dan pemesanan coffee shop NISCALA. Frontend React menampilkan m
 
    ```dotenv
    DATABASE_URL="postgresql://niscala_app:PASSWORD_ANDA@127.0.0.1:5432/niscala?schema=public"
+   JWT_SECRET="GANTI_DENGAN_HASIL_PERINTAH_DI_BAWAH"
    ```
 
-3. Jalankan backend dari terminal pertama. Migrasi membuat tabel `Produk` dan memasukkan enam menu awal.
+   Jalankan `node -e "console.log(require('node:crypto').randomBytes(32).toString('hex'))"` untuk membuat nilai `JWT_SECRET`.
+
+3. Jalankan backend dari terminal pertama. Migrasi membuat tabel `Produk` dan `users` serta memasukkan enam menu awal.
 
    ```sh
    cd backend
    npm ci
    npx prisma migrate dev
-   npm run start:dev
+   npx prisma generate
+   npm run start:dev -- --env-file .env
    ```
 
 4. Jalankan frontend dari folder utama proyek di terminal kedua.
@@ -27,7 +31,7 @@ Aplikasi katalog dan pemesanan coffee shop NISCALA. Frontend React menampilkan m
    npm run dev
    ```
 
-Buka `http://localhost:5173` untuk katalog atau klik **Admin** untuk mengelola menu. REST API berjalan di `http://localhost:3000/produk`.
+Buka `http://localhost:5173` untuk katalog. Klik **Admin**, buat akun, lalu masuk untuk mengelola menu. Endpoint `POST /auth/register` dan `POST /auth/login` menerima `email` dan `password`. Gunakan `accessToken` dari login pada header `Authorization: Bearer <token>` untuk menambah, mengubah, dan menghapus produk.
 
 ## REST API Produk
 

@@ -12,6 +12,14 @@ enum KategoriProduk {
   Pastry
 }
 
+model User {
+  id           Int    @id @default(autoincrement())
+  email        String @unique @db.VarChar(254)
+  passwordHash String @map("password_hash") @db.VarChar(60)
+
+  @@map("users")
+}
+
 model Produk {
   id        Int            @id @default(autoincrement())
   nama      String         @db.VarChar(60)

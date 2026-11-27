@@ -5,6 +5,7 @@ import MenuCatalog from './components/MenuCatalog.jsx';
 import Footer from './components/Footer.jsx';
 import UlasanSection from './components/UlasanSection.jsx';
 import AdminPage from './components/AdminPage.jsx';
+import AuthForm from './components/AuthForm.jsx';
 import { rupiah } from './data/produk.js';
 import { getProduk, tambahProduk, ubahProduk, hapusProduk } from './api/produk.js';
 
@@ -13,6 +14,7 @@ export default function App() {
   const [status, setStatus] = useState('loading');
   const [pesanError, setPesanError] = useState('');
   const [halaman, setHalaman] = useState('katalog');
+  const [accessToken, setAccessToken] = useState('');
   const [keranjang, setKeranjang] = useState([]);
   const [pesananTerkirim, setPesananTerkirim] = useState(false);
   const meja = new URLSearchParams(window.location.search).get('meja');
@@ -32,18 +34,18 @@ export default function App() {
   useEffect(() => { muatProduk(); }, []);
 
   async function handleTambah(data) {
-    const baru = await tambahProduk(data);
+    const baru = await tambahProduk(data, accessToken);
     setProduk((daftar) => [...daftar, baru]);
   }
 
   async function handleUbah(id, data) {
-    const baru = await ubahProduk(id, data);
+    const baru = await ubahProduk(id, data, accessToken);
     setProduk((daftar) => daftar.map((item) => item.id === id ? baru : item));
     setKeranjang((daftar) => daftar.map((item) => item.id === id ? { ...baru, jumlah: item.jumlah } : item));
   }
 
   async function handleHapus(id) {
-    await hapusProduk(id);
+    await hapusProduk(id, accessToken);
     setProduk((daftar) => daftar.filter((item) => item.id !== id));
     setKeranjang((daftar) => daftar.filter((item) => item.id !== id));
   }
@@ -68,9 +70,14 @@ export default function App() {
     return (
       <>
         <Navbar halaman={halaman} onPindah={setHalaman} />
-        {status === 'error'
+        {!accessToken ? <AuthForm onLogin={setAccessToken} /> : <>
+          <div className="container pt-3 d-flex justify-content-end">
+            <button className="btn btn-outline-secondary" type="button" onClick={() => setAccessToken('')}>Keluar</button>
+          </div>
+          {status === 'error'
           ? <div className="container py-5"><p className="alert alert-danger">{pesanError}</p><button className="btn btn-primary" type="button" onClick={muatProduk}>Coba lagi</button></div>
           : <AdminPage produk={produk} onTambah={handleTambah} onUbah={handleUbah} onHapus={handleHapus} />}
+        </>}
         <Footer />
       </>
     );
